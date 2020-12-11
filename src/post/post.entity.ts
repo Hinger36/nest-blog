@@ -18,6 +18,10 @@ export class Post {
   @Column({ type: 'text', comment: '内容' })
   content!: string;
 
-  @CreateDateColumn({ type: 'timestamp', comment: '创建时间' })
+  @CreateDateColumn({
+    name: 'create_at',
+    type: 'timestamp',
+    comment: '创建时间',
+  })
   createAt: Date;
 }
