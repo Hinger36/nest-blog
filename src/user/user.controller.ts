@@ -21,19 +21,19 @@ export class UserController {
   @Get()
   async getAll() {
     const users = await this.userService.getAll();
-    return { code: 200, message: 'success', data: { items: users } };
+    return { message: 'success', data: { items: users } };
   }
 
   @Get(':id')
   async getOne(@Param('id', ParseIntPipe) id: number) {
     const user = await this.userService.getOne(id);
-    return { code: 200, message: 'success', data: user };
+    return { message: 'success', data: user };
   }
 
   @Post()
   async createOne(@Body() dto: CreateUserDto) {
     const user = await this.userService.create(dto);
-    return { code: 201, message: 'User created', data: user };
+    return { message: 'User created', data: user };
   }
 
   @Put(':id')
@@ -42,12 +42,12 @@ export class UserController {
     @Body() dto: EditUserDto,
   ) {
     const user = await this.userService.edit(id, dto);
-    return { code: 200, message: 'User edited', data: user };
+    return { message: 'User edited', data: user };
   }
 
   @Delete(':id')
   async deleteOne(@Param('id', ParseIntPipe) id: number) {
     const data = await this.userService.remove(id);
-    return { code: 204, message: 'User deleted', data: data };
+    return { message: 'User deleted', data: data };
   }
 }

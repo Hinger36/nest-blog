@@ -20,19 +20,19 @@ export class PostController {
   @Get()
   async getAllPost() {
     const data = await this.postService.getAllPost();
-    return { code: 200, message: 'success', data: { items: data } };
+    return { message: 'success', data: { items: data } };
   }
 
   @Get(':id')
   async getPostById(@Param('id', ParseIntPipe) id: number) {
     const data = await this.postService.getPostById(id);
-    return { code: 200, message: 'success', data };
+    return { message: 'success', data };
   }
 
   @Post()
   async createPost(@Body() dto: CreatePostDto) {
     const data = await this.postService.createPost(dto);
-    return { code: 201, message: 'Post created', data };
+    return { message: 'Post created', data };
   }
 
   @Put(':id')
@@ -41,12 +41,12 @@ export class PostController {
     @Body() dto: EditPostDto,
   ) {
     const data = await this.postService.editPostById(id, dto);
-    return { code: 200, message: 'Post edited', data };
+    return { message: 'Post edited', data };
   }
 
   @Delete(':id')
   async removePost(@Param('id', ParseIntPipe) id: number) {
     await this.postService.removePostById(id);
-    return { code: 204, message: 'Post deleted', data: { id } };
+    return { message: 'Post deleted', data: { id } };
   }
 }

@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CatsModule } from './cats/cats.module';
 import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+
 @Module({
-  imports: [TypeOrmModule.forRoot(), CatsModule, PostModule, UserModule],
+  imports: [TypeOrmModule.forRoot(), PostModule, UserModule, AuthModule],
   controllers: [],
   providers: [],
 })
